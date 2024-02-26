@@ -1,0 +1,40 @@
+@charset "utf-8";
+
+/* common */
+* { font-family:'Pretendard', 'Malgun Gothic', 'Apple SD Gothic Neo', Arial, Helvetica, sans-serif; font-style:normal; color:#222; border:0; box-sizing:border-box; margin:0; padding:0; -webkit-font-smoothing:antialiased; -webkit-tap-highlight-color:rgba(0,0,0,0); outline:0; }	/* 웹접근성 심사할 경우 'outline:0' 삭제 */
+html { width:100%; height:100%; }
+body { width:100%; height:100%; font-size:14px; line-height:18px; letter-spacing:0; background:#f6f6f6; -webkit-text-size-adjust:none; -ms-text-size-adjust:none; -webkit-overflow-scrolling:auto; -webkit-user-select:none; }
+input, button, select, textarea { -webkit-appearance:none; -webkit-border-radius:0; border-radius:0; }
+button { line-height:normal; background:none; cursor:pointer; }
+table { width:100%; border-spacing:0; border-collapse:collapse; }
+caption { width:0; height:0; font-size:xx-small; line-height:0; text-indent:-9999px; overflow:hidden; opacity:0; }
+a, a:hover, a:active, a:visited, a:link, a:focus { color:inherit; text-decoration:none; }
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button { -webkit-appearance:none; margin:0; }
+ol, ul, dl, li, dt, dd { position:relative; display:block; list-style:none; }
+h1, h2, h3, h4, h5, h6 { font-weight:400; }
+
+.hidden { position:absolute; display:inline-block; width:0; height:0; font-size:xx-small; text-align:left; text-indent:-9999px; overflow:hidden; opacity:0; pointer-events:none; }
+.hide { display:none !important; }
+.txt_l { text-align:left !important; }
+.txt_r { text-align:right !important; }
+.txt_c { text-align:center !important; }
+.fc_red { color:#ef3b24 !important; }
+.fc_black { color:#222 !important; }
+.underline { font-size:inherit; text-decoration:underline; }
+
+/* skip */
+.skipnav { position:absolute; top:0; left:0; width:100%; height:0; line-height:0; }
+.skipnav a { overflow:hidden; width:1px; height:1px; margin:0 -1px -1px 0; padding:0; font-size:0; line-height:0; display:block; }
+.skipnav a:active,
+.skipnav a:focus,
+.skipnav a:hover { position:absolute; top:0; left:0; z-index:200; width:100%; height:auto; margin:0; padding:10px; border:1px solid #000; background:#333; color:#fff; font-size:16px; text-align:center; line-height:100%; }
+
+#Wrap,
+#wrap { width:100%; height:100%; background:#fff;}
+
+/* layout */
+#Header {}
+#Container {}
+.contents {}
+#Footer {}
