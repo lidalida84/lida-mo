@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="stylesheet" href="/css/common.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/ui.js"></script>
+</head>
+<body>
+  <div class="skipnav"><a href="#Container">본문 바로가기</a></div>
+  <div id="Wrap">
+    <header id="Header">
+      <h1 class="tit_h1">라디오</h1>
+    </header>
+    <main id="Container">
+      <section class="contents">
+        <div class="radio_group">
+          <div class="radio_item">
+            <input type="radio" id="rdo1-1" name="rdo1">
+            <label for="rdo1-1"><span>라디오1-1</span></label>
+          </div>
+          <div class="radio_item">
+            <input type="radio" id="rdo1-2" name="rdo1">
+            <label for="rdo1-2"><span>라디오1-2</span></label>
+          </div>
+        </div>
+
+        <br><br><br>
+
+        <div class="radio_group type_tab">
+          <div class="radio_item">
+            <input type="radio" id="rdo2-1" name="rdo2" checked>
+            <label for="rdo2-1"><span>라디오2-1</span></label>
+          </div>
+          <div class="radio_item">
+            <input type="radio" id="rdo2-2" name="rdo2">
+            <label for="rdo2-2"><span>라디오2-2</span></label>
+          </div>
+          <!-- <span class="selected_bar"></span> 스크립트로 들어감 -->
+        </div>
+      </section>
+      <footer id="Footer">풋터</footer>
+    </main>
+  </div>
+  <div id="layer_popup_container">
+  </div>
+  <script type="text/javascript">
+    $(function(){
+      lidaUI.setTabRadio();
+    });
+  </script>
+</body>
+</html>
