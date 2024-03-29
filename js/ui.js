@@ -118,6 +118,31 @@ var lidaUI = {
       
       selBlock.css({left:`${chkedItemLeft}px`, width: chkedItemWidth+'px'});
     }
+  },
+
+  setDropdown: function(opt){
+    var id = opt.id,
+        callback = opt.callback,
+        selObj = $('#' + id),
+        selBox = selObj.closest('.ui_select'),
+        initVal = selObj.find('option:not([hidden]):selected').val(),
+        initTxt = selObj.find('option:not([hidden]):selected').text(),
+        placeholder = selObj.find('option[hidden]').text(),
+        optItems = selObj.find('option:not([hidden])'),
+        optionLayer = '';
+
+        // selectbox의 값을 가져와서 button + option layer만들기
+        // 1. button 만들기
+        optionLayer += `<button type="button" id="selBtn_${id}" class="sel_btn">
+                          <span class="placeholder">${placeholder}</span>
+                        </button>`;
+        optionLayer += `<div class="opt_layer">
+                        </div>
+                        `;
+
+        selBox.append($(optionLayer));
+
+        console.log(optionLayer);
   }
 
 }
