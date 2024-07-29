@@ -24,44 +24,68 @@
     </main>
   </div>
   <div id="layer_popup_container">
-    <div class="layer_popup type_float" id="aaa">
-      <div class="popup_header">
-        <strong class="title">팝업A</strong>
-        <button type="button" class="pop_close"><span class="hidden">닫기</span></button>
-      </div>
-      <div class="popup_body">
-
-      </div>
-      <div class="popup_foot">
-        <div class="inner_foot">
-          <button type="button" class="btn_strong">확인</button>
-        </div>
-      </div>
-    </div>
     <div class="layer_popup type_float" id="bbb">
       <div class="popup_header">
         <strong class="title">팝업B</strong>
-        <button type="button" class="pop_close"><span class="hidden">닫기</span></button>
+        <button type="button" class="btn_close"><span class="hidden">닫기</span></button>
       </div>
       <div class="popup_body">
-        <textarea name="" id="" cols="30" rows="10" class="inp_text" style="height: auto; width: 100%;"></textarea>
+        <style>
+          .board_wrap .btn_line { height:56px; border:1px solid #000; }
+          .board_wrap .btn_line.active { border-color: red; }
+          .board_wrap .btn_line + .btn_line { margin-top:8px; }
+        </style>
+        <div class="board_wrap">
+          <div class="btn_line active">1</div>
+          <div class="btn_line">2</div>
+          <div class="btn_line">3</div>
+        </div>
       </div>
       <div class="popup_foot">
         <div class="inner_foot">
-          <button type="button" class="btn_strong">확인</button>
+          <button type="button" class="btn_strong">해지신청</button>
         </div>
       </div>
     </div>
   </div>
   <script type="text/javascript">
+    $(function(){
+      popOpen();
+      selectBox();
+    })
+
+    
     function popOpen(){
       // lidaUI.openPopup('aaa');
       lidaUI.openPopup({
         id: 'bbb'
       });
+
     }
 
+    function selectBox() {
+      var signBtn = $('.board_wrap').find('[class^="btn_"]');
+      var selBoxTxt = '';
 
+      signBtn.off('click.selectType').on('click.selectType', function(){
+        signBtn.removeClass('active');
+        $(this).addClass('active');
+        var btnIdx = $('.board_wrap .active').index();
+
+        switch(btnIdx) {
+          case 0:
+            selBoxTxt = '1선택버튼';
+            break;
+          case 1:
+            selBoxTxt = '2선택버튼';
+            break;
+          case 2:
+            selBoxTxt = '3선택버튼';
+            break;
+        }
+        $('.popup_foot .btn_strong').html(selBoxTxt);
+      })
+    }
   </script>
 </body>
 </html>

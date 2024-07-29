@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="stylesheet" href="/css/common.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/ui.js"></script>
+</head>
+<body>
+  <div class="skipnav"><a href="#Container">본문 바로가기</a></div>
+  <div id="Wrap">
+    <header id="Header">
+      <h1 class="tit_h1">탭</h1>
+    </header>
+    <main id="Container">
+      <section class="contents">
+        <div class="paragraph"><strong>탭1</strong>내용입니다.</div>
+        <div class="tab_group">
+          <div class="tab_btns type_tab">
+            <button type="button" class="tab_btn selected"><span>탭1</span></button>
+            <button type="button" class="tab_btn"><span>탭2</span></button>
+          </div>
+          <div class="tab_content">
+            <div class="tab_panel active">탭1내용</div>
+            <div class="tab_panel">탭2내용</div>
+          </div>
+        </div>
+      </section>
+      <footer id="Footer">풋터</footer>
+    </main>
+  </div>
+  <div id="layer_popup_container">
+  </div>
+  <script type="text/javascript">
+    $(function(){
+      lidaUI.setTab();
+    });
+
+    const pubEx = () => {
+      const title = document.querySelector('.paragraph');
+      const tabs = document.querySelectorAll('.tab_btns .tab_btn');
+
+      tabs.forEach(item => {
+        item.addEventListener('click', ()=>{
+          if(item.id === 'tab1_1') {
+            title.innerHTML = `<strong>탭1</strong>내용입니다.`
+          }else {
+            title.innerHTML = `<strong>탭2</strong>내용입니다.`
+          }
+        })
+      })
+    }
+
+    pubEx();
+  </script>
+</body>
+</html>

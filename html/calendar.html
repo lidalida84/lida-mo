@@ -18,11 +18,20 @@
     </header>
     <main id="Container"> 
       <section class="contents">
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <input type="text" class="inp_text startDate">
-        <br><br>
-        <input type="text" class="inp_text startDate h_bottom">
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <div class="form_item col2">
+          <div class="col date">
+            <label for="selectDate1" class="form_label"><span>날짜선택</span></label>
+            <div class="inp_box">
+              <input type="text" id="selectDate1" class="inp_text startDate">
+            </div>
+          </div>
+          <div class="col date">
+            <label for="selectDate2" class="form_label"><span>날짜선택</span></label>
+            <div class="inp_box">
+              <input type="text" id="selectDate2" class="inp_text startDate h_bottom">
+            </div>
+          </div>
+        </div>
       </section>
       <footer id="Footer">풋터</footer>
     </main>
@@ -51,6 +60,10 @@
       allowInputToggle: true,
       yearRange:'c-30:c+30',
       beforeShow:(input,inst) => {
+        if(($input).prop("disabled")) {
+          return false;
+        }
+
         console.log(inst.selectedMonth + 1, inst.selectedYear); //selectedMonth는 1 작게 나오기 때문에 +1을 해준다.
         // console.log($(input));
 
@@ -78,6 +91,38 @@
       }  
     })
 
+    $(".startDate").on('focus', function(){
+      $(this).siblings('.ui-datepicker-trigger').css('pointer-events', 'none');
+    }).on('blur', function(){
+      $(this).siblings('.ui-datepicker-trigger').css('pointer-events', 'all');
+    }).on('click', function(){
+      $(this).datepicker('hide');
+      $(this).attr('readonly', false);
+    })
+
+
+    $(".startDate").datepicker("option", "beforeShow", function(){
+      titleChanged('타이틀이다앙');
+    }).datepicker("option", "onChangeMonthYear", function(){
+      titleChanged('타이틀이다앙');
+    })
+
+
+
+    const titleChanged = (item) => {
+      const uiDate = document.querySelector("#ui-datepicker-div");
+      const temp = `
+        <div class="ui_datepicker_title">
+        </div> 
+      `;
+
+      setTimeout(()=> {
+        uiDate.insertAdjacentHTML("afterbegin", temp);
+        const datepickerTitle  = document.querySelector(".ui_datepicker_title");
+
+        datepickerTitle.innerHTML =  `${item}`;
+      },0);
+    }
 
 
 /* 

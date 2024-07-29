@@ -17,12 +17,37 @@
     </header>
     <main id="Container">
       <section class="contents">
+        <style>
+
+        </style>
         <div class="form_item">
           <div class="form_label">폼요소 타이틀</div>
           <div class="inp_box">
             <input type="text" class="inp_text">
           </div>
         </div>
+        <div class="form_item">
+          <div class="form_label">폼요소 타이틀 readonly</div>
+          <div class="inp_box">
+            <input type="text" class="inp_text" readonly value="readonly">
+          </div>
+        </div>
+        <div class="form_item">
+          <div class="form_label">폼요소 타이틀 disabled</div>
+          <div class="inp_box">
+            <input type="text" class="inp_text" disabled value="disabled">
+          </div>
+        </div>
+
+        <div class="form_item price won">
+          <div class="form_label">unit right정렬</div>
+          <div class="inp_box">
+            <input type="text" class="inp_text txt_r">
+            <span class="placeholder">원단위로 입력해주세요.</span>
+            <span class="unit hide">원</span>
+          </div>
+        </div>
+
       </section>
       <footer id="Footer">풋터</footer>
     </main>
@@ -32,7 +57,30 @@
   <script type="text/javascript">
     $(function(){
       // lidaUI.setTabRadio();
+
+      unitInput();
     });
+
+    function unitInput(){
+      var inpUnit =  $('.form_item.won .inp_text'),
+          inpUnitPlaceholder = inpUnit.siblings('.placeholder'),
+          unit = inpUnit.siblings('.unit'),
+          inpUnitBox = inpUnit.parent('.inp_box');
+
+
+          inpUnit.on('focus.unitfocus', function() {
+            inpUnitPlaceholder.addClass('hide');
+            unit.removeClass('hide');
+          }).on('blur.unitblur', function() {
+            if(!!$(this).val()) return false;
+            inpUnitPlaceholder.removeClass('hide');
+            unit.addClass('hide');
+          }).off('input.unitinput').on('input.unitinput', function(){
+            var inpVal = $(this).val();
+            inpUnitPlaceholder.addClass('hide');
+            unit.removeClass('hide');
+          })
+    }
   </script>
 </body>
 </html>
